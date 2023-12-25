@@ -14,15 +14,15 @@ on that data. Exactly what processing your program will perform will be determin
 The program should check if the data read follows the wav standard that
 previously described and print the relevant audio information. i.e.
 
-⋅⋅* size of file (in bytes)
-⋅⋅* size of format chunk 
-⋅⋅* WAVE type format
-⋅⋅* mono/stereo
-⋅⋅* sample rate
-⋅⋅* bytes per second
-⋅⋅* block alignment
-⋅⋅* bits/sample
-⋅⋅* size of data chunk
+- size of file (in bytes)
+- size of format chunk 
+- WAVE type format
+- mono/stereo
+- sample rate
+- bytes per second
+- block alignment
+- bits/sample
+- size of data chunk
 
 * MODE 2
 This mode transfers to the output, with the help of the putchar function, the audio data, having doubled
