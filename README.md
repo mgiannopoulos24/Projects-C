@@ -1,14 +1,13 @@
 # Projects C
 C projects | Introduction to Programming 2020-21
 
-## Kalmpr.c
+## Project Kalmpr
 
-The kalmpr.c program computes and prints the number of all k-almost prime numbers found within the interval [MINNUM,MAXNUM], for 2≤ k ≤ MAXK, and the number of those that are in particular, 2-relative prime numbers, i.e., half-primes. For the half-integers of interest, it prints the factors of which they are decomposed. Then we increase the range of the range of the [MINNUM,MAXNUM] interval to see the rate at which the execution time of our program also increases. Then the program selects 20 positive integer numbers for each of which it prints the k corresponding to it.
+The ```kalmpr.c``` program computes and prints the number of all k-almost prime numbers found within the interval [MINNUM,MAXNUM], for 2≤ k ≤ MAXK, and the number of those that are in particular, 2-relative prime numbers, i.e., half-primes. For the half-integers of interest, it prints the factors of which they are decomposed. Then we increase the range of the range of the [MINNUM,MAXNUM] interval to see the rate at which the execution time of our program also increases. Then the program selects 20 positive integer numbers for each of which it prints the k corresponding to it.
 
-## Wavproc.c 
+## Project Wavproc
 
-The wavproc.c program which will read with getchar from the input audio data that following the wav standard described above and perform some processing
-on that data. Exactly what processing your program will perform will be determined by the value of a symbolic MODE constant that you set in it. The requested treatments,depending on the value of MODE are:
+The ```wavproc.c``` program which will read with getchar from the input audio data that following the wav standard described above and perform some processing on that data. Exactly what processing your program will perform will be determined by the value of a symbolic MODE constant that you set in it. The requested treatments,depending on the value of MODE are:
 
 * MODE 1<br>
 The program should check if the data read follows the wav standard that
@@ -44,7 +43,28 @@ This mode switches to the output, with the help of the putchar function, the sou
 
 * MODE 7<br>
 
-## Shoprec.c (TBA)
+Modes 4 to 7 havent been coded.
 
+## Project Shop
 
+For this project we have a certain amount of money available, let's say M, and we want to buy N products with it. For each product i (1 ≤ i ≤ N), there are Ki model choices available, each costing Cij (1 ≤ j ≤ Ki , Cij > 0). 
 
+For example, suppose we have 500 euros available and we want to buy a computer, a printer and an external disk, spending as much money as we can. Let's say that for the computer we have three choices, an HP, a Dell and an Asus. For the printer we have two choices, an Epson and a Lexmark, and for the external drive we have four choices, a Seagate, a Samsung, a Maxtor and a Toshiba. For each possible model of the products we want to buy, we know the cost. 
+
+What is the maximum amount we can spend, ϕat most M, to buy one model of each of the N products?
+
+This project was solved with 3 different methods.
+
+* Recursive method (```shoprec.c```):<br>
+
+This method solves the problem using recursive logic. We start from the products and the amount of money available. For each product, we consider all possible options and calculate the maximum amount we can spend. This is repeated recursively for each product, taking into account the amount of money available and the options for each product.
+
+* Recursive method with memorization(```shopmem.c```):<br>
+
+In this method, we use a memory table (or cache) to store intermediate results so that they are not recalculated. Whenever we need an intermediate result, we first check if it already exists in memory. If so, we use it directly, otherwise we compute it and store it in memory for future use.
+
+* Iterative method with dynamic programming(```shopdp.c```): <br>
+
+This method uses dynamic programming to solve the problem. We start from the smallest problems and gradually construct solutions for larger and larger sub-problems. We keep a table that stores the optimal solutions for each subproblem so that we do not compute the same subproblems multiple times. In this way, we arrive at an optimal solution for the original problem.
+
+The files ```shopdpcost.c``` and ```shopmemcost.c``` also are modified so that the costs of the models to be purchased are also found, in order to spend the largest possible amount of money from the initially available amount. If there is more than one combination of model costs that leads to the optimal solution, your program only needs to print one of them. Whether or not the costs are printed depends on whether or not the symbolic constant COSTS is set. 
