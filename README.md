@@ -51,7 +51,7 @@ For this project we have a certain amount of money available, let's say M, and w
 
 For example, suppose we have 500 euros available and we want to buy a computer, a printer and an external disk, spending as much money as we can. Let's say that for the computer we have three choices, an HP, a Dell and an Asus. For the printer we have two choices, an Epson and a Lexmark, and for the external drive we have four choices, a Seagate, a Samsung, a Maxtor and a Toshiba. For each possible model of the products we want to buy, we know the cost. 
 
-What is the maximum amount we can spend, ϕat most M, to buy one model of each of the N products?
+What is the maximum amount we can spend, at most M, to buy one model of each of the N products?
 
 This project was solved with 3 different methods.
 
