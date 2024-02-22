@@ -71,4 +71,4 @@ The files ```shopdpcost.c``` and ```shopmemcost.c``` also are modified so that t
 
 ## Project IPL
 
-Needs a lot of changes. For fully implemented version follow (IPL Fast)[https://github.com/chatziko/ipli-fast]
+Needs a lot of changes. For fully implemented version follow [IPL Fast](https://github.com/chatziko/ipli-fast)
