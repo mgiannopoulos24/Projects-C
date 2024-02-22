@@ -42,20 +42,20 @@ With this mode the output will be the right channel of the input, in case of ste
 This mode switches to the output, with the help of the putchar function, the sound of the input to the output, but with reduced its intensity to 1/8 of the original.
 
 * MODE 7<br>
-This mode, it does not read data from the input, but to produce wav data at the output, based on the following mathematical formula:
-
-$f(t)=my \cdot sin(2\pi f_c t - m_i \cdot sin (2\pi f_m t))$
-
-For this purpose, I made a C function `void mysound(int dur, int sr, double fm, double fc, double mi, double mv);`
-The arguments are:
-
-- dur is the duration of the sound in seconds,
-- sr is the SampleRate for the pitch of the sound and 
-- fm, fc, mi, mv are the parameters given in the formula (for p I used the symbolic constant M PI, defined in math.h). 
-
-The sound to be produced should be mono (MonoStereo = 1) and represented by 2 bytes per sample (BitsPerSample = 16)
-
-Note: Mode 7 doesnt work properly.
+  This mode, it does not read data from the input, but to produce wav data at the output, based on the following mathematical formula:
+  
+  <center>$f(t)=my \cdot sin(2\pi f_c t - m_i \cdot sin (2\pi f_m t))$</center>
+  
+  For this purpose, I made a C function `void mysound(int dur, int sr, double fm, double fc, double mi, double mv);`
+  The arguments are:
+  
+  - dur is the duration of the sound in seconds,
+  - sr is the SampleRate for the pitch of the sound and 
+  - fm, fc, mi, mv are the parameters given in the formula (for p I used the symbolic constant M PI, defined in math.h). 
+  
+  The sound to be produced should be mono (MonoStereo = 1) and represented by 2 bytes per sample (BitsPerSample = 16)
+  
+  Note: Mode 7 doesnt work properly.
 
 ## Project Shop
 
