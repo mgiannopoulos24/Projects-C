@@ -43,7 +43,7 @@ This mode switches to the output, with the help of the putchar function, the sou
 
 * MODE 7<br>
 
-Modes 4 to 7 havent been coded.
+Mode 7 doesnt work properly.
 
 ## Project Shop
 
@@ -68,3 +68,7 @@ In this method, we use a memory table (or cache) to store intermediate results s
 This method uses dynamic programming to solve the problem. We start from the smallest problems and gradually construct solutions for larger and larger sub-problems. We keep a table that stores the optimal solutions for each subproblem so that we do not compute the same subproblems multiple times. In this way, we arrive at an optimal solution for the original problem.
 
 The files ```shopdpcost.c``` and ```shopmemcost.c``` also are modified so that the costs of the models to be purchased are also found, in order to spend the largest possible amount of money from the initially available amount. If there is more than one combination of model costs that leads to the optimal solution, your program only needs to print one of them. Whether or not the costs are printed depends on whether or not the symbolic constant COSTS is set. 
+
+## Project IPL
+
+Needs a lot of changes. For fully implemented version follow (IPL Fast)[https://github.com/chatziko/ipli-fast]
