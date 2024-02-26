@@ -3,6 +3,8 @@
     "files.associations": {
         "math.h": "c",
         "io.h": "c",
-        "fcntl.h": "c"
+        "fcntl.h": "c",
+        "stdio.h": "c",
+        "stdbool.h": "c"
     },
 }
