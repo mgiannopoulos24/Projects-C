@@ -42,8 +42,20 @@ With this mode the output will be the right channel of the input, in case of ste
 This mode switches to the output, with the help of the putchar function, the sound of the input to the output, but with reduced its intensity to 1/8 of the original.
 
 * MODE 7<br>
-
-Mode 7 doesnt work properly.
+  This mode, it does not read data from the input, but to produce wav data at the output, based on the following mathematical formula:
+  
+  <center>$f(t)=my \cdot sin(2\pi f_c t - m_i \cdot sin (2\pi f_m t))$</center>
+  
+  For this purpose, I made a C function `void mysound(int dur, int sr, double fm, double fc, double mi, double mv);`
+  The arguments are:
+  
+  - dur is the duration of the sound in seconds,
+  - sr is the SampleRate for the pitch of the sound and 
+  - fm, fc, mi, mv are the parameters given in the formula (for p I used the symbolic constant M PI, defined in math.h). 
+  
+  The sound to be produced should be mono (MonoStereo = 1) and represented by 2 bytes per sample (BitsPerSample = 16)
+  
+  Note: Mode 7 doesnt work properly.
 
 ## Project Shop
 
@@ -51,7 +63,7 @@ For this project we have a certain amount of money available, let's say M, and w
 
 For example, suppose we have 500 euros available and we want to buy a computer, a printer and an external disk, spending as much money as we can. Let's say that for the computer we have three choices, an HP, a Dell and an Asus. For the printer we have two choices, an Epson and a Lexmark, and for the external drive we have four choices, a Seagate, a Samsung, a Maxtor and a Toshiba. For each possible model of the products we want to buy, we know the cost. 
 
-What is the maximum amount we can spend, ϕat most M, to buy one model of each of the N products?
+What is the maximum amount we can spend, at most M, to buy one model of each of the N products?
 
 This project was solved with 3 different methods.
 
@@ -71,4 +83,4 @@ The files ```shopdpcost.c``` and ```shopmemcost.c``` also are modified so that t
 
 ## Project IPL
 
-Needs a lot of changes. For fully implemented version follow (IPL Fast)[https://github.com/chatziko/ipli-fast]
+Needs a lot of changes. For fully implemented version follow [IPL Fast](https://github.com/chatziko/ipli-fast)
