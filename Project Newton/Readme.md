@@ -14,10 +14,10 @@ Both on Linux and Windows:
 
 ## Example executions
 
-- `./newton 1.0 2.0 3.0 4.0 5.0 6.0 1.0`
+- `./newton 1.0 2.0 3.0 4.0 5.0 6.0 1.0`<br>
    Approximate root: `-0.67`
-- `./newton 1.0 0.0 1.0 0.0 0.0 0.0 2.0`
+- `./newton 1.0 0.0 1.0 0.0 0.0 0.0 2.0`<br>
    Result: `incomplete`
-- `./newton 1.0 0.0 1.0 0.0 0.0 0.0 0.0`
+- `./newton 1.0 0.0 1.0 0.0 0.0 0.0 0.0`<br>
     Result: nan
  
