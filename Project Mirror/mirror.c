@@ -2,67 +2,66 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include <stdint.h>
+#define UPPER_LIMIT 1000000000000000ULL
 
-int is_prime(int num) {
-    if (num <= 1) return 0;
-    if (num == 2) return 1;
-    if (num % 2 == 0) return 0;
-    for (int i = 3; i <= sqrt(num); i += 2) {
-        if (num % i == 0)
-            return 0;
+unsigned long long mirror(unsigned long long n) {
+    unsigned long long rev = 0;
+    while (n != 0) {
+        rev = rev * 10 + n % 10;
+        n /= 10;
     }
-    return 1;
+    return rev;
 }
 
-int is_square_of_prime(int num) {
-    int root = (int)sqrt(num);
-    return (root * root == num) && is_prime(root);
+int isperfectsq(unsigned long long x) {
+    unsigned long long root = sqrt(x);
+    return (root * root == x);
 }
 
-int reverse_number(int num) {
-    int reversed = 0;
-    while (num > 0) {
-        reversed = reversed * 10 + num % 10;
-        num /= 10;
-    }
-    return reversed;
-}
-
-int is_palindromic(int num) {
-    return num == reverse_number(num);
-}
-
-int main(int argc, char *argv[]) {
-    if (argc != 3) {
-        fprintf(stderr, "Usage: %s low high\n", argv[0]);
-        return 1;
+void sieve_of_eratosthenes(char *is_prime, unsigned long long limit) {
+    for (unsigned long long i = 2; i <= limit; i++) {
+        is_prime[i] = 1;
     }
 
-    int64_t low = atoi(argv[1]);
-    int64_t high = atoi(argv[2]);
-
-    if (low <= 0 || high <= 0 || low > high) {
-        fprintf(stderr, "Error: Arguments must be positive integers and 'low' should be less than or equal to 'high'.\n");
-        return 1;
-    }
-
-    int64_t sum = 0; // To hold the sum of the numbers meeting the criteria
-
-    for (int64_t base = (int64_t)sqrt(low); base * base <= high; base++) {
-        if (is_prime(base)) {
-            int64_t square = base * base;
-            if (!is_palindromic(square)) {
-                int64_t mirror = reverse_number(square);
-                // Check if the mirror is within the range and is a square of a prime
-                if (mirror <= high && is_square_of_prime(mirror) && !is_palindromic(mirror)) {
-                    printf("%lld and its mirror %lld are both squares of a prime and not palindromic.\n", square, mirror);
-                    sum += square;
-                }
+    for (unsigned long long num = 2; num * num <= limit; num++) {
+        if (is_prime[num]) {
+            for (unsigned long long multiple = num * num; multiple <= limit; multiple += num) {
+                is_prime[multiple] = 0;
             }
         }
     }
-    printf("The sum of all numbers meeting the criteria is: %lld\n", sum);
+}
 
+int main(int argc, char **argv) {
+    if (argc != 3) {
+        printf("Usage: %s low high\n", argv[0]);
+        return 1;
+    }
+
+    unsigned long long low = strtoull(argv[1], NULL, 10);
+    unsigned long long high = strtoull(argv[2], NULL, 10);
+
+    if ((low > high) || (low < 1) || (high < 1) || (high > UPPER_LIMIT)) {
+        printf("Input error!\n");
+        return 1;
+    }
+
+    unsigned long long limit = sqrt(UPPER_LIMIT);
+    char *is_prime = calloc(limit + 1, sizeof(char));
+    sieve_of_eratosthenes(is_prime, limit);
+
+    unsigned long long sum = 0;
+    for (unsigned long long i = 1; i * i <= high; i++) {
+        if (!is_prime[i]) continue; // Skip if i is not prime
+        unsigned long long k = i * i;
+        if (k < low) continue;
+        unsigned long long mir = mirror(k);
+        if (mir != k && mir <= high && isperfectsq(mir) && is_prime[(unsigned long long)sqrt(mir)]) {
+            sum += k;
+        }
+    }
+
+    printf("The sum is: %llu\n", sum);
+    free(is_prime);
     return 0;
 }
