@@ -19,7 +19,7 @@ The rotated image will be saved as a new BMP file with the name specified during
 
 ## Example execution with the provided bmp
 
-`./fauxtoshop < ghost.bmp > rotated_ghost.bmp`
+`./fauxtoshop < Apparition_of_Face_and_Fruit.bmp > rotated_img.bmp`
 
 ## Note
 This program only rotates BMP images by 90 degrees clockwise. It does not support other image formats or rotation angles. Additionally, the input image must be properly formatted BMP with 24-bit color depth for accurate results.
