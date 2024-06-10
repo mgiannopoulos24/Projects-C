@@ -1,0 +1,10 @@
+Process A sent message: 7rffFlWohtHCJA4t7VHXlIyu8l8k5T
+
+Process B sent message: prJLLtu2DjX4VbwSWvj3OPpcGWNsM0
+
+Process C sent message: 0rZuLijtxGnbozoBToHAJfWBoWE29A
+
+Process B sent message: RpxkV4rQIMftIsFTjWBx6ZfayU6MWk
+
+Process C sent message: IXJpUHNXJrvKS5MYBhcDF7sD2f3Sci
+
