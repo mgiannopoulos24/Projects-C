@@ -26,60 +26,111 @@ typedef struct {
 } BMPInfoHeader;
 #pragma pack(pop)
 
-int main() {
-    // Read BMP header
+void print_usage(char *program_name) {
+    printf("Usage: %s <input_file.bmp> <output_file.bmp>\n", program_name);
+}
+
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        print_usage(argv[0]);
+        return 1;
+    }
+
+    char *input_filename = argv[1];
+    char *output_filename = argv[2];
+
+    FILE *input_file = fopen(input_filename, "rb");
+    if (!input_file) {
+        fprintf(stderr, "Error: Cannot open input file %s\n", input_filename);
+        return 1;
+    }
+
     BMPHeader header;
-    if (fread(&header, sizeof(BMPHeader), 1, stdin) != 1 || header.type != 0x4D42) {
+    if (fread(&header, sizeof(BMPHeader), 1, input_file) != 1 || header.type != 0x4D42) {
         fprintf(stderr, "Error: Not a valid BMP file.\n");
+        fclose(input_file);
         return 1;
     }
 
-    // Read BMP info header
     BMPInfoHeader info_header;
-    if (fread(&info_header, sizeof(BMPInfoHeader), 1, stdin) != 1) {
+    if (fread(&info_header, sizeof(BMPInfoHeader), 1, input_file) != 1) {
         fprintf(stderr, "Error: Unable to read BMP info header.\n");
+        fclose(input_file);
         return 1;
     }
 
-    // Check if the image is 24-bit BMP
     if (info_header.bit_count != 24) {
         fprintf(stderr, "Error: Only 24-bit BMP images are supported.\n");
+        fclose(input_file);
         return 1;
     }
 
-    // Write headers to output
-    fwrite(&header, sizeof(BMPHeader), 1, stdout);
-    fwrite(&info_header, sizeof(BMPInfoHeader), 1, stdout);
+    FILE *output_file = fopen(output_filename, "wb");
+    if (!output_file) {
+        fprintf(stderr, "Error: Cannot open output file %s\n", output_filename);
+        fclose(input_file);
+        return 1;
+    }
 
-    // Compute padding
-    int padding = (4 - (info_header.width * 3) % 4) % 4;
+    // Calculate padding for the original image
+    int original_padding = (4 - (info_header.width * 3) % 4) % 4;
+    int rotated_padding = (4 - (info_header.height * 3) % 4) % 4;
 
-    // Allocate memory for pixel data
-    uint8_t *pixels = (uint8_t *)malloc((info_header.width * 3 + padding) * info_header.height);
+    // Allocate memory for pixel data of the original image
+    uint8_t *pixels = (uint8_t *)malloc((info_header.width * 3 + original_padding) * info_header.height);
     if (!pixels) {
         fprintf(stderr, "Error: Memory allocation failed.\n");
+        fclose(input_file);
+        fclose(output_file);
         return 1;
     }
 
-    // Read pixel data
-    if (fread(pixels, sizeof(uint8_t), (info_header.width * 3 + padding) * info_header.height, stdin) !=
-        (info_header.width * 3 + padding) * info_header.height) {
+    // Read pixel data from input file
+    if (fread(pixels, sizeof(uint8_t), (info_header.width * 3 + original_padding) * info_header.height, input_file) !=
+        (info_header.width * 3 + original_padding) * info_header.height) {
         fprintf(stderr, "Error: Unable to read pixel data.\n");
         free(pixels);
+        fclose(input_file);
+        fclose(output_file);
+        return 1;
+    }
+
+    // Allocate memory for rotated pixel data
+    uint8_t *rotated_pixels = (uint8_t *)malloc((info_header.height * 3 + rotated_padding) * info_header.width);
+    if (!rotated_pixels) {
+        fprintf(stderr, "Error: Memory allocation failed.\n");
+        free(pixels);
+        fclose(input_file);
+        fclose(output_file);
         return 1;
     }
 
     // Rotate image 90 degrees clockwise
     for (int y = 0; y < info_header.height; y++) {
-        for (int x = info_header.width - 1; x >= 0; x--) {
-            fwrite(&pixels[(x * 3 + padding) * info_header.height + y * 3], sizeof(uint8_t), 3, stdout);
-        }
-        // Write padding
-        for (int i = 0; i < padding; i++) {
-            fputc(0x00, stdout);
+        for (int x = 0; x < info_header.width; x++) {
+            // Calculate new coordinates in rotated image
+            int original_offset = (y * (info_header.width * 3 + original_padding)) + (x * 3);
+            int rotated_offset = ((info_header.width - x - 1) * (info_header.height * 3 + rotated_padding)) + (y * 3);
+
+            // Copy pixel data
+            rotated_pixels[rotated_offset] = pixels[original_offset];
+            rotated_pixels[rotated_offset + 1] = pixels[original_offset + 1];
+            rotated_pixels[rotated_offset + 2] = pixels[original_offset + 2];
         }
     }
 
+    // Write headers to output
+    fwrite(&header, sizeof(BMPHeader), 1, output_file);
+    fwrite(&info_header, sizeof(BMPInfoHeader), 1, output_file);
+
+    // Write rotated pixel data to output file
+    fwrite(rotated_pixels, sizeof(uint8_t), (info_header.height * 3 + rotated_padding) * info_header.width, output_file);
+
+    // Clean up
     free(pixels);
+    free(rotated_pixels);
+    fclose(input_file);
+    fclose(output_file);
+
     return 0;
 }
