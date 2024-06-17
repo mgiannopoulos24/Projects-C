@@ -1,0 +1,101 @@
+1|The Catcher in the Rye|J.D. Salinger|1
+2|To Kill a Mockingbird|Harper Lee|1
+3|1984|George Orwell|1
+4|Pride and Prejudice|Jane Austen|1
+5|The Great Gatsby|F. Scott Fitzgerald|1
+6|Jane Eyre|Charlotte Bronte|1
+7|Moby Dick|Herman Melville|1
+8|The Adventures of Huckleberry Finn|Mark Twain|1
+9|The Hobbit|J.R.R. Tolkien|1
+10|Alice's Adventures in Wonderland|Lewis Carroll|1
+11|The Lord of the Rings|J.R.R. Tolkien|1
+12|Gone with the Wind|Margaret Mitchell|1
+13|Anna Karenina|Leo Tolstoy|1
+14|Brave New World|Aldous Huxley|1
+15|Catch-22|Joseph Heller|1
+16|Crime and Punishment|Fyodor Dostoevsky|1
+17|Don Quixote|Miguel de Cervantes|1
+18|Frankenstein|Mary Shelley|1
+19|Great Expectations|Charles Dickens|1
+20|The Grapes of Wrath|John Steinbeck|1
+21|Hamlet|William Shakespeare|1
+22|Harry Potter and the Sorcerer's Stone|J.K. Rowling|1
+23|Heart of Darkness|Joseph Conrad|1
+24|Les Miserables|Victor Hugo|1
+25|Little Women|Louisa May Alcott|1
+26|Moby-Dick|Herman Melville|1
+27|One Hundred Years of Solitude|Gabriel Garcia Marquez|1
+28|Persuasion|Jane Austen|1
+29|The Picture of Dorian Gray|Oscar Wilde|1
+30|The Scarlet Letter|Nathaniel Hawthorne|1
+31|Slaughterhouse-Five|Kurt Vonnegut|1
+32|The Sound and the Fury|William Faulkner|1
+33|The Stranger|Albert Camus|1
+34|To the Lighthouse|Virginia Woolf|1
+35|War and Peace|Leo Tolstoy|1
+36|Wuthering Heights|Emily Bronte|1
+37|Beloved|Toni Morrison|1
+38|The Brothers Karamazov|Fyodor Dostoevsky|1
+39|The Canterbury Tales|Geoffrey Chaucer|1
+40|David Copperfield|Charles Dickens|1
+41|The Divine Comedy|Dante Alighieri|1
+42|Emma|Jane Austen|1
+43|For Whom the Bell Tolls|Ernest Hemingway|1
+44|The Girl with the Dragon Tattoo|Stieg Larsson|1
+45|Gulliver's Travels|Jonathan Swift|1
+46|The Handmaid's Tale|Margaret Atwood|1
+47|I, Claudius|Robert Graves|1
+48|Infinite Jest|David Foster Wallace|1
+49|Lolita|Vladimir Nabokov|1
+50|Maus|Art Spiegelman|1
+51|Middlemarch|George Eliot|1
+52|The Odyssey|Homer|1
+53|Othello|William Shakespeare|1
+54|The Outsiders|S.E. Hinton|1
+55|Paradise Lost|John Milton|1
+56|The Phantom of the Opera|Gaston Leroux|1
+57|The Road|Cormac McCarthy|1
+58|The Secret Garden|Frances Hodgson Burnett|1
+59|Silent Spring|Rachel Carson|1
+60|Snow Crash|Neal Stephenson|1
+61|The Stand|Stephen King|1
+62|The Sun Also Rises|Ernest Hemingway|1
+63|Their Eyes Were Watching God|Zora Neale Hurston|1
+64|Things Fall Apart|Chinua Achebe|1
+65|The Three Musketeers|Alexandre Dumas|1
+66|Thus Spoke Zarathustra|Friedrich Nietzsche|1
+67|The Trial|Franz Kafka|1
+68|Ulysses|James Joyce|1
+69|Uncle Tom's Cabin|Harriet Beecher Stowe|1
+70|Vanity Fair|William Makepeace Thackeray|1
+71|Walden|Henry David Thoreau|1
+72|Watchmen|Alan Moore|1
+73|Wide Sargasso Sea|Jean Rhys|1
+74|The Wind in the Willows|Kenneth Grahame|1
+75|Winnie-the-Pooh|A.A. Milne|1
+76|The Wonderful Wizard of Oz|L. Frank Baum|1
+77|A Wrinkle in Time|Madeleine L'Engle|1
+78|The Adventures of Sherlock Holmes|Arthur Conan Doyle|1
+79|The Hound of the Baskervilles|Arthur Conan Doyle|1
+80|The Count of Monte Cristo|Alexandre Dumas|1
+81|The Metamorphosis|Franz Kafka|1
+82|Invisible Man|Ralph Ellison|1
+83|Candide|Voltaire|1
+84|The Iliad|Homer|1
+85|The Odyssey|Homer|1
+86|The Aeneid|Virgil|1
+87|Gargantua and Pantagruel|Francois Rabelais|1
+88|King Lear|William Shakespeare|1
+89|As You Like It|William Shakespeare|1
+90|The Tempest|William Shakespeare|1
+91|Macbeth|William Shakespeare|1
+92|Twelfth Night|William Shakespeare|1
+93|Oedipus Rex|Sophocles|1
+94|Antigone|Sophocles|1
+95|Medea|Euripides|1
+96|The Birds|Aristophanes|1
+97|The Republic|Plato|1
+98|The Prince|Machiavelli|1
+99|The Art of War|Sun Tzu|1
+100|The Communist Manifesto|Karl Marx|1
+101|Programming Techniques|Robert Sedgewick|1
