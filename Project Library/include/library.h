@@ -30,8 +30,13 @@ void display_books();  // Display all books in the library
 void search_book();   // Search for a book by title or author
 void borrow_book(int user_id);  // Borrow a book
 void return_book(int user_id);  // Return a borrowed book
+void delete_book(int book_id);  // Delete a book from the library
 void login();  // User login function
 void register_user();  // Register a new user
 bool is_user_registered(char *username, char *password);  // Check if a user is registered
+int is_user_logged_in();
+int get_logged_in_user_id();
+
+void logout();
 
 #endif // LIBRARY_H

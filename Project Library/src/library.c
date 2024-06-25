@@ -6,6 +6,7 @@
 // Global variables
 Book books[MAX_BOOKS];
 User users[MAX_USERS];
+User *get_logged_in_user(void);
 int num_books = 0;
 int num_users = 0;
 
@@ -98,6 +99,13 @@ void login() {
 
     if (is_user_registered(username, password)) {
         printf("Login successful!\n");
+        for (int i = 0; i < num_users; i++) {
+            if (strcmp(users[i].username, username) == 0 && strcmp(users[i].password, password) == 0) {
+                User *logged_in_user = get_logged_in_user();
+                *logged_in_user = users[i];  // Set the logged in user
+                break;
+            }
+        }
     } else {
         printf("Invalid username or password.\n");
     }
@@ -247,36 +255,6 @@ void delete_book(int book_id) {
     save_books_to_file();  // Save books to file after deletion
 }
 
-void edit_book(int book_id) {
-    int found = 0;
-    for (int i = 0; i < num_books; i++) {
-        if (books[i].book_id == book_id) {
-            printf("Enter new title (Enter to keep current): ");
-            if (scanf(" %[^\n]", books[i].title) != 1) {
-                printf("Error reading title.\n");
-                return;
-            }
-            printf("Enter new author (Enter to keep current): ");
-            if (scanf(" %[^\n]", books[i].author) != 1) {
-                printf("Error reading author.\n");
-                return;
-            }
-            printf("Enter new availability (0 for not available, 1 for available, Enter to keep current): ");
-            if (scanf("%d", &books[i].available) != 1) {
-                printf("Error reading availability.\n");
-                return;
-            }
-            found = 1;
-            printf("Book information updated successfully.\n");
-            break;
-        }
-    }
-    if (!found) {
-        printf("Book not found.\n");
-    }
-    save_books_to_file();  // Save books to file after editing
-}
-
 User *get_logged_in_user() {
     static User logged_in_user;  // Static variable to hold logged in user (persistent across function calls)
     return &logged_in_user;
@@ -299,6 +277,7 @@ void logout() {
 }
 
 void borrow_book(int user_id) {
+    (void)user_id;
     if (!is_user_logged_in()) {
         printf("Please login first.\n");
         return;
@@ -327,6 +306,7 @@ void borrow_book(int user_id) {
 }
 
 void return_book(int user_id) {
+    (void)user_id;
     if (!is_user_logged_in()) {
         printf("Please login first.\n");
         return;
@@ -353,4 +333,3 @@ void return_book(int user_id) {
     }
     save_books_to_file();  // Save books to file after returning
 }
-
