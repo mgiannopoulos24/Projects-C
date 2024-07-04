@@ -4,7 +4,7 @@
 #include "enclosure.h"
 
 
-Enclosure createEnclosure(const char* name, const char* habitat) {
+Enclosure* createEnclosure(const char* name, const char* habitat) {
     Enclosure* enclosure = (Enclosure*)malloc(sizeof(Enclosure));
     if (enclosure == NULL) {
         fprintf(stderr, "Error: Memory allocation failed for enclosure.\n");
@@ -22,7 +22,7 @@ Enclosure createEnclosure(const char* name, const char* habitat) {
     enclosure->maxCapacity = MAX_ANIMALS_PER_ENCLOSURE;
     enclosure->assignedZookeeper = NULL;
 
-    return *enclosure;
+    return enclosure;
 }
 
 void addAnimalToEnclosure(Animal* animal, Enclosure* enclosure) {

@@ -672,7 +672,6 @@ void editorScroll() {
   }
 }
 
-
 void editorDrawRows(struct abuf *ab) {
   int y;
   for (y = 0; y < E.screenrows; y++) {
@@ -697,13 +696,13 @@ void editorDrawRows(struct abuf *ab) {
       int len = E.row[filerow].rsize - E.coloff;
       if (len < 0) len = 0;
       if (len > E.screencols) len = E.screencols;
-      char *c = &E.row[filerow].render[E.coloff];
-      unsigned char *hl = &E.row[filerow].hl[E.coloff];
       int current_color = -1;
       int j;
       for (j = 0; j < len; j++) {
-        if (iscntrl(c[j])) {
-          char sym = (c[j] <= 26) ? '@' + c[j] : '?';
+        char c = E.row[filerow].render[E.coloff + j];
+        unsigned char hl = E.row[filerow].hl[E.coloff + j];
+        if (iscntrl(c)) {
+          char sym = (c <= 26) ? '@' + c : '?';
           abAppend(ab, "\x1b[7m", 4);
           abAppend(ab, &sym, 1);
           abAppend(ab, "\x1b[m", 3);
@@ -712,21 +711,21 @@ void editorDrawRows(struct abuf *ab) {
             int clen = snprintf(buf, sizeof(buf), "\x1b[%dm", current_color);
             abAppend(ab, buf, clen);
           }
-        } else if (hl[j] == HL_NORMAL) {
+        } else if (hl == HL_NORMAL) {
           if (current_color != -1) {
             abAppend(ab, "\x1b[39m", 5);
             current_color = -1;
           }
-          abAppend(ab, &c[j], 1);
+          abAppend(ab, &c, 1);
         } else {
-          int color = editorSyntaxToColor(hl[j]);
+          int color = editorSyntaxToColor(hl);
           if (color != current_color) {
             current_color = color;
             char buf[16];
             int clen = snprintf(buf, sizeof(buf), "\x1b[%dm", color);
             abAppend(ab, buf, clen);
           }
-          abAppend(ab, &c[j], 1);
+          abAppend(ab, &c, 1);
         }
       }
       abAppend(ab, "\x1b[39m", 5);
@@ -798,10 +797,14 @@ char *editorPrompt(char *prompt, void (*callback)(char *, int)) {
   char *buf = malloc(bufsize);
   size_t buflen = 0;
   buf[0] = '\0';
+  
+  if (buf == NULL) return NULL; // Handle allocation failure
+  
   while (1) {
     editorSetStatusMessage(prompt, buf);
     editorRefreshScreen();
     int c = editorReadKey();
+    
     if (c == DEL_KEY || c == CTRL_KEY('h') || c == BACKSPACE) {
       if (buflen != 0) buf[--buflen] = '\0';
     } else if (c == '\x1b') {
@@ -817,8 +820,14 @@ char *editorPrompt(char *prompt, void (*callback)(char *, int)) {
       }
     } else if (!iscntrl(c) && c < 128) {
       if (buflen == bufsize - 1) {
-        bufsize *= 2;
-        buf = realloc(buf, bufsize);
+        size_t new_bufsize = bufsize * 2;
+        char *new_buf = realloc(buf, new_bufsize);
+        if (new_buf == NULL) { // Handle allocation failure
+          free(buf);
+          return NULL;
+        }
+        buf = new_buf;
+        bufsize = new_bufsize;
       }
       buf[buflen++] = c;
       buf[buflen] = '\0';

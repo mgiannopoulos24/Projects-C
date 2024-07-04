@@ -14,13 +14,20 @@ void add_task(const char *description) {
         if (capacity == 0) {
             capacity = INITIAL_CAPACITY;
             tasks = malloc(capacity * sizeof(Task));
+            if (tasks == NULL) {
+                fprintf(stderr, "Memory allocation failed.\n");
+                exit(1);
+            }
         } else {
-            capacity *= 2;
-            tasks = realloc(tasks, capacity * sizeof(Task));
-        }
-        if (tasks == NULL) {
-            fprintf(stderr, "Memory allocation failed.\n");
-            exit(1);
+            size_t new_capacity = capacity * 2;
+            Task *new_tasks = realloc(tasks, new_capacity * sizeof(Task));
+            if (new_tasks == NULL) {
+                free(tasks);  // Free the existing memory before exiting
+                fprintf(stderr, "Memory allocation failed.\n");
+                exit(1);
+            }
+            tasks = new_tasks;
+            capacity = new_capacity;
         }
     }
     strcpy(tasks[num_tasks].description, description);
