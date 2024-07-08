@@ -21,3 +21,6 @@ In this method, we use a memory table (or cache) to store intermediate results s
 This method uses dynamic programming to solve the problem. We start from the smallest problems and gradually construct solutions for larger and larger sub-problems. We keep a table that stores the optimal solutions for each subproblem so that we do not compute the same subproblems multiple times. In this way, we arrive at an optimal solution for the original problem.
 
 The files ```shopdpcost.c``` and ```shopmemcost.c``` also are modified so that the costs of the models to be purchased are also found, in order to spend the largest possible amount of money from the initially available amount. If there is more than one combination of model costs that leads to the optimal solution, your program only needs to print one of them. Whether or not the costs are printed depends on whether or not the symbolic constant COSTS is set. 
+
+
+**Note:** This project is the 3rd assignment of Introduction to Programming 2020-21 (Κ04) course of DIT NKUA.

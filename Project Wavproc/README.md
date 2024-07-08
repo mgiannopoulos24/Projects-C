@@ -48,4 +48,6 @@ This mode switches to the output, with the help of the putchar function, the sou
   
   The sound to be produced should be mono (MonoStereo = 1) and represented by 2 bytes per sample (BitsPerSample = 16)
   
-  Note: Mode 7 doesnt work properly.
+  **Mode 7 doesnt work properly yet.**
+
+**Note:** This project is the 2nd assignment of Introduction to Programming 2020-21 (Κ04) course of DIT NKUA.
