@@ -2,6 +2,12 @@
 
 This project is a simple implementation of the classic 2048 game using SDL2 for graphics and TTF (TrueType Font) for rendering text. The game involves sliding numbered tiles on a grid to combine them, with the goal of creating a tile with the number 2048.
 
+<p align="center">
+
+<img src="https://i.imgur.com/g6zjTof.png">
+
+</p>
+
 ## Features
 - Graphical user interface using SDL2.
 - Score tracking and display.
