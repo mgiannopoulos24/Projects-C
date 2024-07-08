@@ -136,7 +136,8 @@ Running task P3 for 8 time units.
 
 ### Cleaning
 To remove compiled binaries and object files, run:
-
-`make clean`
+```console
+make clean
+```
 
 **Note:** This project is an assignment of the 3rd series of exercises of the Operating Systems (17.122) course of DIND NKUA.
