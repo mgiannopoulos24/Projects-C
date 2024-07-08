@@ -2,7 +2,7 @@
 
 This project implements various CPU scheduling algorithms in C. Each program reads a list of tasks from a file, schedules them based on specific algorithms, and simulates their execution on a CPU.
 
-## Algorithms Implemented:
+## Algorithms Implemented
 
 1. First-Come, First-Served (FCFS)
 2. Shortest Remaining Time First (SRTF)
@@ -10,7 +10,17 @@ This project implements various CPU scheduling algorithms in C. Each program rea
 4. Monotonic
 5. Earliest Deadline First (EDF)
 
-### How to compile:
+## Files
+
+- schedule_fcfs.c: Implements the FCFS scheduling algorithm.
+- schedule_srtf.c: Implements the SRTF scheduling algorithm.
+- schedule_priority_rr.c: Implements the Priority Round Robin scheduling algorithm.
+- schedule_monotonic.c: Implements the Monotonic scheduling algorithm.
+- schedule_edf.c: Implements the EDF scheduling algorithm.
+- list.c: Provides functions for managing a linked list of tasks.
+- CPU.c: Simulates the CPU execution.
+
+### Compilation
 
 - All together:
     - `make all`
@@ -22,7 +32,7 @@ This project implements various CPU scheduling algorithms in C. Each program rea
     - `make monotonic`
     - `make edf`
 
-### How to run:
+### Execution
 
 1. FCFS: 
 ```bash 
@@ -124,17 +134,7 @@ Missed deadline for task P1
 Running task P3 for 8 time units.
 ```
 
-## Files
-
-- schedule_fcfs.c: Implements the FCFS scheduling algorithm.
-- schedule_srtf.c: Implements the SRTF scheduling algorithm.
-- schedule_priority_rr.c: Implements the Priority Round Robin scheduling algorithm.
-- schedule_monotonic.c: Implements the Monotonic scheduling algorithm.
-- schedule_edf.c: Implements the EDF scheduling algorithm.
-- list.c: Provides functions for managing a linked list of tasks.
-- CPU.c: Simulates the CPU execution.
-
-### Cleaning:
+### Cleaning
 To remove compiled binaries and object files, run:
 
 `make clean`
