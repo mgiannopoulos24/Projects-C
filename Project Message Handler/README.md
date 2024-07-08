@@ -69,3 +69,5 @@ User@Github:~$ The output with pid 3217 was saved in the outputs directory.
 ### Error Handling
 - The program checks for errors at each critical step (e.g., file operations, semaphore operations, pipe operations) and reports them using perror.
 - If an error occurs, the program exits with a non-zero status code.
+
+**Note:** This project is an assignment of the 2nd series of exercises of the Algorithms, Programming and Data Structures (104) course of AST NKUA.
