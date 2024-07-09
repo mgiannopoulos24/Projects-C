@@ -1,0 +1,10 @@
+hangman
+programming
+computer
+science
+development
+algorithm
+function
+variable
+pointer
+structure
