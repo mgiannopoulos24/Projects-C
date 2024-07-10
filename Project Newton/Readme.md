@@ -21,3 +21,5 @@ Both on Linux and Windows:
 - `./newton 1.0 0.0 1.0 0.0 0.0 0.0 0.0`<br>
     Result: nan
  
+
+**Note:** This project is the 1st exercise of 2nd assignment of Introduction to Programming 2023-24 (Κ04) course of DIT NKUA.

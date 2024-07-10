@@ -25,3 +25,5 @@ The sum is: 53009475688
 ## Special thanks
 
 I would like to thank [Danae](https://github.com/danaemav) for helping me understand how to make the program handle the range `./mirror 1 100000000000`.
+
+**Note:** This project is the 2nd exercise of 2nd assignment of Introduction to Programming 2023-24 (Κ04) course of DIT NKUA.
