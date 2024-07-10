@@ -55,3 +55,6 @@ On Windows:
 2. collatz_fast.c
 - O0 Optimization: `gcc -O0 -o collatz_fast .\collatz_fast.c`
 - O3 Optimization: `gcc -O3 -o collatz_fast .\collatz_fast.c`
+
+
+**Note:** This project is the 3rd exercise of 1st assignment of Introduction to Programming 2023-24 (Κ04) course of DIT NKUA.
