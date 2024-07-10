@@ -1,68 +1,68 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <math.h>
+#include <string.h>
 
-#define UPPER_LIMIT 1000000000000000ULL
-
-long long int atoll(const char *nptr);
-
-int isFlawlessSquare(long long int num) {
-    if (num <= 0) return 0; // Negative numbers and zero are not flawless squares
-
-    long long int temp = num;
-    int digits[10] = {0}; // Array to store the digits
-
-    // Calculate the sum of the digits
-    int sum_of_digits = 0;
-    while (temp > 0) {
-        int digit = temp % 10;
-        sum_of_digits += digit;
-        digits[digit]++;
-        temp /= 10;
-    }
-
-    // Check if the sum of the digits squared is a perfect square
-    long long int sum_of_digits_squared = sum_of_digits * sum_of_digits;
-    long long int sqrt_sum_of_digits_squared = sqrt(sum_of_digits_squared);
-    if (sqrt_sum_of_digits_squared * sqrt_sum_of_digits_squared != sum_of_digits_squared) {
-        return 0; // Sum of digits squared is not a perfect square
-    }
-
-    // Check if each digit is used exactly once
-    for (int i = 1; i < 10; i++) {
-        if (digits[i] != 1) {
-            return 0; // Digit not used or used more than once
-        }
-    }
-
-    return 1; // Number is a flawless square
+// Function to check if a number is a perfect square
+int is_perfect_square(long long num) {
+    long long sqrt_num = (long long)sqrt(num);
+    return (sqrt_num * sqrt_num == num);
 }
 
+// Function to calculate the sum of a list of digits
+long long sum_of_digits(const char *digits, int start, int end) {
+    long long sum = 0;
+    for (int i = start; i <= end; ++i) {
+        sum = sum * 10 + (digits[i] - '0');
+    }
+    return sum;
+}
+
+// Recursive function to check all digit groupings
+int check_groupings(const char *digits, int len, int start, long long current_sum, long long original_num) {
+    if (start == len) {
+        return (current_sum * current_sum == original_num);
+    }
+
+    long long num = 0;
+    for (int i = start; i < len; ++i) {
+        num = num * 10 + (digits[i] - '0');
+        if (check_groupings(digits, len, i + 1, current_sum + num, original_num)) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+// Function to check if a number is a flawless square
+int is_flawless_square(long long num) {
+    if (!is_perfect_square(num)) {
+        return 0;
+    }
+
+    char digits[20];
+    sprintf(digits, "%lld", num);
+    int len = strlen(digits);
+
+    return check_groupings(digits, len, 0, 0, num);
+}
 
 int main(int argc, char *argv[]) {
     if (argc != 3) {
-        printf("Usage: ./flawless low high\n");
-        return 1; // Exit with code 1
+        fprintf(stderr, "Usage: %s <start> <end>\n", argv[0]);
+        return 1;
     }
 
-    long long int low = atoll(argv[1]);
-    long long int high = atoll(argv[2]);
+    long long start = atoll(argv[1]);
+    long long end = atoll(argv[2]);
+    long long sum_flawless_squares = 0;
 
-    if (low <= 0 || high <= 0 || high < low || high > UPPER_LIMIT) {
-        printf("Invalid boundaries\n");
-        return 1; // Exit with code 1
-    }
-
-    long long int sum = 0;
-
-    for (long long int i = low; i <= high; i++) {
-        if (isFlawlessSquare(i)) {
-            sum += i;
+    for (long long i = start; i <= end; i++) {
+        if (is_flawless_square(i)) {
+            sum_flawless_squares += i;
         }
     }
 
-    printf("Sum of flawless squares in range [%lld, %lld]: %lld\n", low, high, sum);
-
+    printf("%lld\n", sum_flawless_squares);
     return 0;
 }
