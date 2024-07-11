@@ -21,5 +21,19 @@ The rotated image will be saved as a new BMP file with the name specified during
 
 `./fauxtoshop < Apparition_of_Face_and_Fruit.bmp > rotated_img.bmp`
 
-## Note
-This program only rotates BMP images by 90 degrees clockwise. It does not support other image formats or rotation angles. Additionally, the input image must be properly formatted BMP with 24-bit color depth for accurate results.
+Before:
+<p align="center">
+
+<img src="./Apparition_of_Face_and_Fruit.bmp">
+
+</p>
+
+After: <br>
+
+<p align="center">
+
+<img src="./rotated_img.bmp">
+
+</p>
+
+**Note:** This project is the 1st exercise of 3rd assignment of Introduction to Programming 2023-24 (Κ04) course of DIT NKUA.
