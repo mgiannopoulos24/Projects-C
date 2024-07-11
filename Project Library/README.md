@@ -1,23 +1,20 @@
-Library Management System
+# Library Management System
 The Library Management System is a command-line application written in C. It allows users to manage books, register/login users, borrow and return books, search for books, and perform administrative tasks such as adding, deleting, and displaying books.
 
-Features
-User Management:
-
-Register new users.
-Login/logout functionality.
-Track currently logged-in users.
-Book Management:
-
-Add new books to the library collection.
-Display all books with details (title, author, availability).
-Search for books by title or author.
-Borrow and return books (for logged-in users).
-File Handling:
-
-Data persistence using text files (books.txt for books data, customers.txt for user data).
-Automatic loading of existing data on program startup.
-Saving data to files after each operation (add, delete, borrow, return).
+## Features
+1. **User Management:**
+- Register new users.
+- Login/logout functionality.
+- Track currently logged-in users.
+2. **Book Management:**
+- Add new books to the library collection.
+- Display all books with details (title, author, availability).
+- Search for books by title or author.
+- Borrow and return books (for logged-in users).
+3. **File Handling:**
+- Data persistence using text files (`books.txt` for books data, `customers.txt` for user data).
+- Automatic loading of existing data on program startup.
+- Saving data to files after each operation (add, delete, borrow, return).
 
 ## Compilation
 

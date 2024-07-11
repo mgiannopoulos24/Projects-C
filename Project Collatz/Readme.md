@@ -1,3 +1,5 @@
+## Collatz Conjecture
+
 The Collatz conjecture, also known as the $3n + 1$ conjecture, is a mathematical hypothesis that applies to a sequence defined for any positive integer. It suggests that no matter what value of $n$ you start with, the sequence will always reach 1. The sequence is defined as follows:
 
 1. If $n$ is 1, the sequence has ended.
