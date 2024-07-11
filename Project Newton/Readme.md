@@ -1,3 +1,5 @@
+## Newton-Raphson Implementation
+
 The newton program implements the Newton-Raphson method to approximate roots of polynomial functions. Given a set of polynomial coefficients and an initial guess for the root, it iteratively refines the guess until convergence criteria are met. The program measures the execution time for finding the root and prints the result. 
 
 ## Termination conditions

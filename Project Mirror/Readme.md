@@ -1,3 +1,5 @@
+## Mirror Squares
+
 The mirror program efficiently identifies and sums up numbers within a specified range that meet a unique set of criteria. Specifically, it finds all numbers that are squares of prime numbers. Additionally, it ensures that the mirror (reverse) of these square numbers is also a prime square but not palindromic (the same forwards as backwards).
 
 ## How it works
