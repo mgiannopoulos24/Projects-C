@@ -18,7 +18,7 @@ Ensure that the input files contain valid DNA sequences consisting only of the c
 
 ## Examples
 
-```bash
+```console
 User@Github:~$ ./dna ./dnas/sample1.dna ./dnas/sample2.dna 
 Maximum common substring is: TAGATATAG
 User@Github:~$ echo -e "CTATAGAT\nHello WORLDATAGGG" > ./dnas/split.dna
@@ -36,9 +36,32 @@ Maximum common substring is: GGTTTGCTTTTATG
 real    0m9.457s
 user    0m6.236s
 sys     0m3.203s
+User@Github:~$ time ./dna ./dnas/theobroma-cacao.dna ./dnas/alien.dna
+Maximum common substring is: AAAAAAAAAAAAAAAAACC
+
+real    0m3.155s
+user    0m3.136s
+sys     0m0.000s
+User@Github:~$ time ./dna ./dnas/theobroma-cacao.dna ./dnas/theobroma-cacao.dna > shared.dna
+
+real    0m22.433s
+user    0m22.409s
+sys     0m0.000s
+User@Github:~$  wc -c shared.dna
+98165 shared.dna
+User@Github:~$  md5sum shared.dna
+5ca8c9e6fd76d46221d3beadd610b165  shared.dna
+User@Github:~$ time ./dna ./dnas/alien.dna ./dnas/alien.dna > shared.dna 
+
+real    0m2.301s
+user    0m2.281s
+sys     0m0.000s
+User@Github:~$ wc -c shared.dna
+62488 shared.dna
+User@Github:~$ wc -c shared.dna
+62488 shared.dna
+User@Github:~$  md5sum shared.dna
+d4544ab6971c6a54bb375159adc5852b  shared.dna
 ```
 
-Sadly the following test dont work:
-- `time ./dna theobroma-cacao.dna alien.dna`
-- `time ./dna theobroma-cacao.dna theobroma-cacao.dna > shared.dna`
-- `time ./dna ./dnas/alien.dna ./dnas/alien.dna > ./dnas/shared.dna`
+**Note:** This project is the 2nd exercise of 2nd assignment of Introduction to Programming 2023-24 (Κ04) course of DIT NKUA.
