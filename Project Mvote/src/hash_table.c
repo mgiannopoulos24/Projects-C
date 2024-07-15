@@ -3,18 +3,38 @@
 #include <string.h>
 #include "hash_table.h"
 
+// Helper function declarations
+void resize_hash_table(HashTable *hash_table);
+
 HashTable* create_hash_table(int size) {
     HashTable *hash_table = (HashTable *) malloc(sizeof(HashTable));
+    if (hash_table == NULL) {
+        perror("Failed to allocate memory for hash table");
+        return NULL;
+    }
+
     hash_table->size = size;
+    hash_table->initial_size = size;
     hash_table->count = 0;
     hash_table->table = (HashNode **) malloc(size * sizeof(HashNode *));
+    if (hash_table->table == NULL) {
+        perror("Failed to allocate memory for hash table array");
+        free(hash_table);
+        return NULL;
+    }
+
     for (int i = 0; i < size; i++) {
         hash_table->table[i] = NULL;
     }
+
     return hash_table;
 }
 
 void free_hash_table(HashTable *hash_table) {
+    if (hash_table == NULL) {
+        return;
+    }
+
     for (int i = 0; i < hash_table->size; i++) {
         HashNode *node = hash_table->table[i];
         while (node) {
@@ -24,6 +44,7 @@ void free_hash_table(HashTable *hash_table) {
             free(temp);
         }
     }
+
     free(hash_table->table);
     free(hash_table);
 }
@@ -33,8 +54,17 @@ int hash_function(int pin, int size) {
 }
 
 void insert_voter(HashTable *hash_table, Voter *voter) {
+    // Check load factor and resize if necessary
+    if ((float) hash_table->count / hash_table->size > 0.75) {
+        resize_hash_table(hash_table);
+    }
+
     int index = hash_function(voter->pin, hash_table->size);
     HashNode *new_node = (HashNode *) malloc(sizeof(HashNode));
+    if (new_node == NULL) {
+        perror("Failed to allocate memory for new node");
+        return;
+    }
     new_node->voter = voter;
     new_node->next = hash_table->table[index];
     hash_table->table[index] = new_node;
@@ -128,4 +158,33 @@ void mark_voters_from_file(const char *filename, HashTable *hash_table) {
 
 int count_total(HashTable *hash_table) {
     return hash_table->count;
+}
+
+void resize_hash_table(HashTable *hash_table) {
+    int new_size = hash_table->size * 2;
+    HashNode **new_table = (HashNode **) malloc(new_size * sizeof(HashNode *));
+    if (new_table == NULL) {
+        perror("Failed to allocate memory for new hash table array");
+        return;
+    }
+
+    for (int i = 0; i < new_size; i++) {
+        new_table[i] = NULL;
+    }
+
+    // Rehash all existing elements into the new table
+    for (int i = 0; i < hash_table->size; i++) {
+        HashNode *node = hash_table->table[i];
+        while (node) {
+            HashNode *next = node->next;
+            int index = hash_function(node->voter->pin, new_size);
+            node->next = new_table[index];
+            new_table[index] = node;
+            node = next;
+        }
+    }
+
+    free(hash_table->table);
+    hash_table->table = new_table;
+    hash_table->size = new_size;
 }
