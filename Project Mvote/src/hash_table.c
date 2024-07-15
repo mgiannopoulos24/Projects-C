@@ -3,8 +3,6 @@
 #include <string.h>
 #include "hash_table.h"
 
-// Helper function declarations
-void resize_hash_table(HashTable *hash_table);
 
 HashTable* create_hash_table(int size) {
     HashTable *hash_table = (HashTable *) malloc(sizeof(HashTable));

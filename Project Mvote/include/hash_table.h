@@ -26,5 +26,6 @@ void list_all_voters(HashTable *hash_table);
 void write_voters_to_file(const char *filename, HashTable *hash_table);
 void mark_voters_from_file(const char *filename, HashTable *hash_table);
 int count_total(HashTable *hash_table);
+void resize_hash_table(HashTable *hash_table);
 
 #endif // HASH_TABLE_H

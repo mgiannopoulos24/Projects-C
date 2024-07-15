@@ -30,7 +30,13 @@ void insert_inverted_list(InvertedList *inverted_list, Voter *voter) {
     InvertedNode *new_node = (InvertedNode *) malloc(sizeof(InvertedNode));
     new_node->voter = voter;
     new_node->next = inverted_list->table[index];
-    inverted_list->table[index] = new_node;
+    new_node->prev = NULL; // New node does not have a previous node initially
+
+    if (inverted_list->table[index] != NULL) {
+        inverted_list->table[index]->prev = new_node; // Set previous of current head
+    }
+
+    inverted_list->table[index] = new_node; // Update the head to be the new node
 }
 
 void list_voters_by_zip(InvertedList *inverted_list, int zip) {

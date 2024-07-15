@@ -1,7 +1,7 @@
 # Mvote: Voting Management System
 
 ## Project Overview
-Mvote is a command-line application written in C designed to manage a voting process. It allows a pollster to track the voting status of voters, add new voters, mark voters as having voted, and generate various statistics related to the voting process. The project utilizes linear hashing for efficient data access and an inverted list to track voters by postal code.
+Mvote is a command-line application written in C designed to manage a voting process. It allows a pollster to track the voting status of voters, add new voters, mark voters as having voted, and generate various statistics related to the voting process. The project utilizes linear hashing for efficient data access and a doubly linked inverted list to track voters by postal code.
 
 ## Directory Structure
 ```bash

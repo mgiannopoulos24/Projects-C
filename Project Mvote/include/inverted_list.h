@@ -6,11 +6,12 @@
 typedef struct InvertedNode {
     Voter *voter;
     struct InvertedNode *next;
+    struct InvertedNode *prev;
 } InvertedNode;
 
 typedef struct InvertedList {
-    InvertedNode **table;
     int size;
+    InvertedNode **table;
 } InvertedList;
 
 typedef struct ZipCount {
