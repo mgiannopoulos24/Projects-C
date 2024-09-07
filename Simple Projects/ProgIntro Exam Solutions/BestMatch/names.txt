@@ -1,0 +1,9 @@
+Alex,3.4
+Casey,9.1
+Jordan,2
+Taylor,5.3
+Morgan,1.7
+Riley Avery,6.16
+Jamie,0
+Quinn,-1.1
+Skyler,5.88
