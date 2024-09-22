@@ -77,3 +77,7 @@ User@Github:~$ ./build/sudoku_solver_gui
 
 ## Cleaning Up
 To remove the compiled binary and object files, run:
+
+```console
+make clean
+```

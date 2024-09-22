@@ -79,3 +79,7 @@ Solved Sudoku:
 
 ## Cleaning Up
 To remove the compiled binary and object files, run:
+
+```console
+make clean
+```
