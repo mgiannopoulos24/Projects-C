@@ -2,23 +2,10 @@
 #include <stdlib.h>
 
 void rotate_matrix(int rows, int cols, int matrix[rows][cols]) {
-    // Δημιουργούμε έναν πίνακα για την περιστροφή
-    int rotated[cols][rows];
-
-    // Γεμίζουμε τον νέο πίνακα με τα περιστραμμένα στοιχεία
-    for (int r = 0; r < rows; r++) {
-        for (int c = 0; c < cols; c++) {
-            rotated[c][rows - 1 - r] = matrix[r][c];
-        }
-    }
-
-    // Εκτυπώνουμε τον περιστραμμένο πίνακα
-    for (int c = 0; c < cols; c++) {
-        for (int r = 0; r < rows; r++) {
-            printf("%d", rotated[c][r]);
-            if (r < rows - 1) {
-                printf(" ");
-            }
+    // Εκτυπώνουμε τον πίνακα περιστραμμένο κατά 90 μοίρες αντίστροφα
+    for (int col = cols - 1; col >= 0; col--) {
+        for (int row = 0; row < rows; row++) {
+            printf("%d ", matrix[row][col]);
         }
         printf("\n");
     }
@@ -26,31 +13,35 @@ void rotate_matrix(int rows, int cols, int matrix[rows][cols]) {
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-        fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
+        // Μήνυμα λάθους αν δεν δοθεί το σωστό όρισμα
+        fprintf(stderr, "Error: You must provide exactly one input file.\n");
         return 1;
     }
 
     FILE *file = fopen(argv[1], "r");
-    if (!file) {
-        perror("Error opening file");
+    if (file == NULL) {
+        // Μήνυμα λάθους αν δεν ανοίξει το αρχείο
+        fprintf(stderr, "Error: Could not open the file.\n");
         return 1;
     }
 
     int rows, cols;
+
+    // Διαβάζουμε τον αριθμό γραμμών και στηλών
     if (fscanf(file, "%d %d", &rows, &cols) != 2) {
-        fprintf(stderr, "Error reading matrix dimensions\n");
+        fprintf(stderr, "Error: Invalid file format.\n");
         fclose(file);
         return 1;
     }
 
-    // Δημιουργούμε τον πίνακα
+    // Δημιουργούμε τον πίνακα δυναμικά
     int matrix[rows][cols];
 
-    // Διαβάζουμε τα στοιχεία του πίνακα από το αρχείο
-    for (int r = 0; r < rows; r++) {
-        for (int c = 0; c < cols; c++) {
-            if (fscanf(file, "%d", &matrix[r][c]) != 1) {
-                fprintf(stderr, "Error reading matrix elements\n");
+    // Διαβάζουμε τα στοιχεία του πίνακα
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (fscanf(file, "%d", &matrix[i][j]) != 1) {
+                fprintf(stderr, "Error: Invalid matrix data.\n");
                 fclose(file);
                 return 1;
             }
@@ -59,12 +50,11 @@ int main(int argc, char *argv[]) {
 
     fclose(file);
 
-    // Καλούμε τη συνάρτηση περιστροφής
+    // Περιστροφή και εκτύπωση του πίνακα
     rotate_matrix(rows, cols, matrix);
 
     return 0;
 }
-
 
 // Μεταγλώττιση:
 // gcc rotate.c -o rotate
