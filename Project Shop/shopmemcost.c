@@ -6,7 +6,7 @@
 
 int memo[MAX_N][MAX_MONEY];
 
-int maxMoneyMemorization(int M, int N, int *C[], int Ki[]) {
+int maxMoneyMemoization(int M, int N, int *C[], int Ki[]) {
     if (N == 0 || M == 0) return 0;
 
     if (memo[N][M] != -1) return memo[N][M];
@@ -15,7 +15,7 @@ int maxMoneyMemorization(int M, int N, int *C[], int Ki[]) {
 
     for (int i = 0; i < Ki[N-1]; i++) {
         if (C[N-1][i] <= M) {
-            int spent = C[N-1][i] + maxMoneyMemorization(M - C[N-1][i], N-1, C, Ki);
+            int spent = C[N-1][i] + maxMoneyMemoization(M - C[N-1][i], N-1, C, Ki);
             if (spent > maxSpent)
                 maxSpent = spent;
         }
@@ -51,7 +51,7 @@ int main() {
         for (int j = 0; j <= M; j++)
             memo[i][j] = -1;
 
-    int maxSpent = maxMoneyMemorization(M, N, C, K);
+    int maxSpent = maxMoneyMemoization(M, N, C, K);
 
     printf("The maximum amount we can spend is: %d\n", maxSpent);
 

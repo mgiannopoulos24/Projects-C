@@ -12,7 +12,7 @@ This project was solved with 3 different methods.
 
 This method solves the problem using recursive logic. We start from the products and the amount of money available. For each product, we consider all possible options and calculate the maximum amount we can spend. This is repeated recursively for each product, taking into account the amount of money available and the options for each product.
 
-- Recursive method with memorization(```shopmem.c```):<br>
+- Recursive method with memoization(```shopmem.c```):<br>
 
 In this method, we use a memory table (or cache) to store intermediate results so that they are not recalculated. Whenever we need an intermediate result, we first check if it already exists in memory. If so, we use it directly, otherwise we compute it and store it in memory for future use.
 
