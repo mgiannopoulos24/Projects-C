@@ -25,8 +25,7 @@ This project is a simple implementation of the classic 2048 game using SDL2 for 
 
 To install the libraries please run:
 ```bash
-sudo apt-get update && sudo apt-get install -y libsdl2-dev
-sudo apt-get update && sudo apt-get install -y libsdl2-ttf-dev
+sudo apt-get update && sudo apt-get install -y libsdl2-dev libsdl2-ttf-dev
 ```
 
 ## Compilation
