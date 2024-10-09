@@ -1,0 +1,34 @@
+touch aFile1.txt
+touch aFile2.txt
+touch aFile3.txt
+touch aFile4.txt
+touch aFile5.txt
+touch aFile6.txt
+touch aFile7.txt
+touch aFile8.txt
+touch aFile9.txt
+touch aFile10.txt
+mv aFile1.txt ren_aFile1.txt
+mv aFile2.txt ren_aFile2.txt
+mv aFile3.txt ren_aFile3.txt
+mv aFile4.txt ren_aFile4.txt
+mv aFile5.txt ren_aFile5.txt
+mv aFile6.txt ren_aFile6.txt
+mv aFile7.txt ren_aFile7.txt
+mv aFile8.txt ren_aFile8.txt
+mv aFile9.txt ren_aFile9.txt
+mv aFile10.txt ren_aFile10.txt
+tar -czvf my_A_CompressedaFile.tar.gz ren_aFile1.txt ren_aFile2.txt ren_aFile3.txt ren_aFile4.txt ren_aFile5.txt ren_aFile6.txt ren_aFile7.txt ren_aFile8.txt ren_aFile9.txt ren_aFile10.txt
+rm ren_aFile1.txt
+rm ren_aFile2.txt
+rm ren_aFile3.txt
+rm ren_aFile4.txt
+rm ren_aFile5.txt
+rm ren_aFile6.txt
+rm ren_aFile7.txt
+rm ren_aFile8.txt
+rm ren_aFile9.txt
+rm ren_aFile10.txt
+mkdir my_A_decompressed_directory
+tar -xzvf my_A_CompressedaFile.tar.gz -C my_A_decompressed_directory
+ls my_A_decompressed_directory

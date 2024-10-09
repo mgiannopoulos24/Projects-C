@@ -1,0 +1,34 @@
+touch bFile1.txt
+touch bFile2.txt
+touch bFile3.txt
+touch bFile4.txt
+touch bFile5.txt
+touch bFile6.txt
+touch bFile7.txt
+touch bFile8.txt
+touch bFile9.txt
+touch bFile10.txt
+mv bFile1.txt ren_bFile1.txt
+mv bFile2.txt ren_bFile2.txt
+mv bFile3.txt ren_bFile3.txt
+mv bFile4.txt ren_bFile4.txt
+mv bFile5.txt ren_bFile5.txt
+mv bFile6.txt ren_bFile6.txt
+mv bFile7.txt ren_bFile7.txt
+mv bFile8.txt ren_bFile8.txt
+mv bFile9.txt ren_bFile9.txt
+mv bFile10.txt ren_bFile10.txt
+tar -czvf my_B_CompressedbFile.tar.gz ren_bFile1.txt ren_bFile2.txt ren_bFile3.txt ren_bFile4.txt ren_bFile5.txt ren_bFile6.txt ren_bFile7.txt ren_bFile8.txt ren_bFile9.txt ren_bFile10.txt
+rm ren_bFile1.txt
+rm ren_bFile2.txt
+rm ren_bFile3.txt
+rm ren_bFile4.txt
+rm ren_bFile5.txt
+rm ren_bFile6.txt
+rm ren_bFile7.txt
+rm ren_bFile8.txt
+rm ren_bFile9.txt
+rm ren_bFile10.txt
+mkdir my_B_decompressed_directory
+tar -xzvf my_B_CompressedbFile.tar.gz -C my_B_decompressed_directory
+ls my_B_decompressed_directory

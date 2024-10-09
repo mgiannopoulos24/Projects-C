@@ -1,0 +1,10 @@
+./progDelay 1000
+./progDelay 1000
+./progDelay 1000
+./progDelay 1000
+./progDelay 1000
+./progDelay 1000
+./progDelay 1000
+./progDelay 1000
+./progDelay 1000
+./progDelay 1000
