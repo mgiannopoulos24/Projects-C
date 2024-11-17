@@ -19,7 +19,15 @@ The key components include:
   - **jobCommander.c**: Implements the interface for interacting with the jobExecutorServer.
   - **jobExecutorServer.c**: Implements the main server responsible for job execution.
   - **progDelay.c**: Utility to simulate a delay, used as a sample job.
-- **tests/**: Contains test commands and scripts to validate project functionality.
+- **tests/**: Contains test files and command inputs
+  - **test_jobExecutor_*.sh**: Series of shell scripts testing different aspects of the system
+  - **commands_*.txt**: Input files containing job commands for batch testing
+  - Test scenarios include:
+    - Basic file operations
+    - Concurrent job execution
+    - Job queue management
+    - Process delay testing
+    - System command execution
 - **Makefile**: A Makefile to compile the source code and generate the executables.
 
 ## Components Details
@@ -48,6 +56,10 @@ The `progDelay` program simulates a delay for demonstration purposes. It accepts
 - **multijob.sh**: Reads job commands from multiple files and submits them sequentially using `jobCommander`.
 - **allJobsStop.sh**: Stops all running and queued jobs using `jobCommander` commands to poll and terminate the jobs.
 
+### Communication Files
+- **/tmp/jobExecutorServer_pipe**: Named pipe used for command communication
+- **jobExecutorServer.txt**: Status file indicating server process ID and running state
+
 ## Compilation and Execution
 ### Compilation
 To compile the project, run the following command from the root directory:
@@ -57,12 +69,6 @@ make
 This will create the executables `jobCommander` and `jobExecutorServer` in the `build/` directory.
 
 ### Running the Project
-Before running the project, you need to create the necessary files and pipes:
-```sh
-touch jobExecutorServer.txt
-mkfifo /tmp/jobExecutorServer_pipe
-```
-
 1. Start the `jobExecutorServer`:
 ```sh
 ./build/jobExecutorServer

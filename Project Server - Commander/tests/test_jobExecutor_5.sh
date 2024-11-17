@@ -1,11 +1,11 @@
-./jobCommander issueJob ./progDelay 1000
-./jobCommander issueJob ./progDelay 110
-./jobCommander issueJob ./progDelay 115
-./jobCommander issueJob ./progDelay 120
-./jobCommander issueJob ./progDelay 125
-./jobCommander poll running
-./jobCommander poll queued
-./jobCommander setConcurrency 2
-./jobCommander poll running
-./jobCommander poll queued
-./jobCommander exit
+./build/jobCommander issueJob ./build/progDelay 1000
+./build/jobCommander issueJob ./build/progDelay 110
+./build/jobCommander issueJob ./build/progDelay 115
+./build/jobCommander issueJob ./build/progDelay 120
+./build/jobCommander issueJob ./build/progDelay 125
+./build/jobCommander poll running
+./build/jobCommander poll queued
+./build/jobCommander setConcurrency 2
+./build/jobCommander poll running
+./build/jobCommander poll queued
+./build/jobCommander exit

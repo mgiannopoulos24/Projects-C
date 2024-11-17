@@ -1,1 +1,1 @@
-./multijob.sh commands_1.txt commands_2.txt
+./scripts/multijob.sh ./tests/commands_1.txt ./tests/commands_2.txt

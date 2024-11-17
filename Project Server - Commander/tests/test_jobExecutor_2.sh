@@ -1,2 +1,2 @@
-./jobCommander issueJob ./progDelay 2
-./jobCommander exit
+./build/jobCommander issueJob ./build/progDelay 2
+./build/jobCommander exit

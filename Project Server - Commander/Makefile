@@ -21,7 +21,9 @@ $(BINDIR)/jobCommander: $(OBJDIR)/jobCommander.o
 $(BINDIR)/progDelay: $(OBJDIR)/progDelay.o
 	$(CC) $(CFLAGS) -o $@ $^
 
+	mkfifo /tmp/jobExecutorServer_pipe
+
 clean:
-	rm -rf $(OBJDIR)/*.o $(BINDIR)/*
+	rm -rf $(OBJDIR)/*.o $(BINDIR)/* /tmp/jobExecutorServer_pipe jobExecutorServer.txt
 
 .PHONY: all clean

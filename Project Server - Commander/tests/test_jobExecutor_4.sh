@@ -1,4 +1,4 @@
-./jobCommander issueJob ./progDelay 20
-./jobCommander poll running
-./jobCommander poll queued
-./jobCommander exit
+./build/jobCommander issueJob ./build/progDelay 20
+./build/jobCommander poll running
+./build/jobCommander poll queued
+./build/jobCommander exit
