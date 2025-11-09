@@ -37,11 +37,7 @@ This mode switches to the output, with the help of the putchar function, the sou
 * MODE 7<br>
 This mode implements an audio generation function. It **does not read any data from the input** (stdin), but instead produces valid WAV audio data to the output (stdout), based on the following mathematical formula:
   
-<center>
-
-$f(t)=my \cdot sin(2\pi f_c t - m_i \cdot sin (2\pi f_m t))$
-
-</center>
+$$f(t)=my \cdot sin(2\pi f_c t - m_i \cdot sin (2\pi f_m t))$$
   
 The arguments are:
 
