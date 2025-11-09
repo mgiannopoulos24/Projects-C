@@ -1,6 +1,6 @@
 # Project Wavproc
 
-The ```wavproc.c``` program which will read with getchar from the input audio data that following the wav standard described above and perform some processing on that data. Exactly what processing your program will perform will be determined by the value of a symbolic MODE constant that you set in it. The requested treatments,depending on the value of MODE are:
+The `wavproc.c` program which will read with getchar from the input audio data that following the wav standard described above and perform some processing on that data. Exactly what processing your program will perform will be determined by the value of a symbolic MODE constant that you set in it. The requested treatments,depending on the value of MODE are:
 
 * MODE 1<br>
 The program should check if the data read follows the wav standard that
@@ -35,19 +35,23 @@ With this mode the output will be the right channel of the input, in case of ste
 This mode switches to the output, with the help of the putchar function, the sound of the input to the output, but with reduced its intensity to 1/8 of the original.
 
 * MODE 7<br>
-  This mode, it does not read data from the input, but to produce wav data at the output, based on the following mathematical formula:
+This mode implements an audio generation function. It **does not read any data from the input** (stdin), but instead produces valid WAV audio data to the output (stdout), based on the following mathematical formula:
   
-  <center>$f(t)=my \cdot sin(2\pi f_c t - m_i \cdot sin (2\pi f_m t))$</center>
+<center>
+
+$f(t)=my \cdot sin(2\pi f_c t - m_i \cdot sin (2\pi f_m t))$
+
+</center>
   
-  For this purpose, I made a C function `void mysound(int dur, int sr, double fm, double fc, double mi, double mv);`
-  The arguments are:
-  
-  - dur is the duration of the sound in seconds,
-  - sr is the SampleRate for the pitch of the sound and 
-  - fm, fc, mi, mv are the parameters given in the formula (for p I used the symbolic constant M PI, defined in math.h). 
-  
-  The sound to be produced should be mono (MonoStereo = 1) and represented by 2 bytes per sample (BitsPerSample = 16)
-  
-  **Mode 7 doesnt work properly yet.**
+The arguments are:
+
+| Parameter	| Description |
+|-------------|-------------|
+| dur	| Duration of the sound in seconds (float). |
+| sr	| The Sample Rate (used as the `SampleRate` in the WAV header). |
+| fm, fc	| The modulator and carrier frequencies in the formula (float). |
+| mi, mv	| The modulation index and the maximum volume/amplitude (where π is the symbolic constant `M_PI` defined using `math.h`). |
+
+The sound produced is Mono (`NumChannels` = 1) and is represented by 2 bytes per sample (`BitsPerSample` = 16).
 
 **Note:** This project is the 2nd assignment of Introduction to Programming 2020-21 (Κ04) course of DIT NKUA.
